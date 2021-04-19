@@ -21,22 +21,24 @@ def scan_keywords(word, file, name):
             # if word and 'status=ok' and 'rt=19' in line:
             #     print("{} {} {}".format(counter, name, line))
 
-def scan_file_for_word(word):
+def scan_file_for_word(word, path_home):
 
         #print("inside scan file")
         file_pre = "\\gwdaemon.log"
         for i in range(50,0,-1):
             file_fullname = file_pre + '.' + str(i)
-            full_path = path_home1 + file_fullname
+            full_path = path_home + file_fullname
             #print(full_path)
             if os.path.exists(full_path):
                 scan_keywords(word, full_path, file_fullname)
                 #print("inside file")
 
-        scan_keywords(word, path_home1 + file_pre, 'log')
+        scan_keywords(word, path_home + file_pre, 'log')
 
 if __name__=="__main__":
     #scan_keywords('[BH]', "\\gwdaemon.log.0")
     #scan_keywords('[BH]', "\\gwdaemon.log")
-    scan_file_for_word('[BH]')
+    #scan_file_for_word('[BH]', path_home0)
+    scan_file_for_word('-> status=', path_home0)
+
 
